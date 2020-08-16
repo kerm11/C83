@@ -92,10 +92,11 @@ public class ProductAction {
 //                true));
 //    }
 	
+	//要跳转到jsp动态页面地址
     //redirect 
 //    @RequestMapping("/redirect")
 //    public String redirect(){
-//        return "/pay.do";
+//        return "pay";
 //    }
     
 	@GetMapping("pay.do")

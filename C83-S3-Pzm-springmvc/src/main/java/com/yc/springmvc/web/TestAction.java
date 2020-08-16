@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.objenesis.instantiator.basic.NewInstanceInstantiator;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -92,24 +91,33 @@ public class TestAction {
 	 * 会话对象的注入
 	 * SpringMVC 数据模型（Map) Model 请求过程中用于临时保存数据的对象
 	 * @SessionAttribute  从会话中获取一个指定的对象，加在方法参数上
-	 * @SessionAttributes 将指定对象设置到会话中，加在类上
+	 * 
+	 * @RestController与@SessionAttributes 有冲突
+	 * 要在@RestController标注的类中给会话添加属性，要通过注入会话对象的方法
+	 * 
+	 * @SessionAttributes 将指定对象设置到会话中，加在类上  age没有加在  @SessionAttributes
 	 */
 	@RequestMapping("{user}/{pwd}/login.do")
 	public String logindo(@PathVariable("user") String user,
-			@PathVariable String pwd,Model model){
+			@PathVariable String pwd,Model model,
+			HttpSession session){ //该方法中没有用到 Model
 		DmUser du = new DmUser();
 		du.setEname(user);
 		du.setPassword(pwd);
 		//将用户对象添加到数据模型中
-		model.addAttribute("loginedUser",du);
-		model.addAttribute("now",new Date());
-		model.addAttribute("age",100);
+//		model.addAttribute("loginedUser",du);
+//		model.addAttribute("now",new Date());
+//		model.addAttribute("age",100);
+		session.setAttribute("loginedUser",du);
+		session.setAttribute("now",new Date());
+		//session.setAttribute("age",100);
 		return du.toString();
 	}
 	
 	/**
 	 * 验证会话中值
 	 */
+	@RequestMapping("testLogin")
 	public String testLogin(
 			@SessionAttribute("loginedUser") DmUser du,
 			@SessionAttribute("now") Date date,
