@@ -1,8 +1,13 @@
 package com.yc.springmvc.web;
 
 import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -69,11 +74,37 @@ public class ProductAction {
 	 * 请求参数==>对象 装箱 ==>java 包装类 装箱
 	 * 对于一些特殊类型对象（日期），需要用springmvc 转换器进行值得转换
 	 */
-	@GetMapping("reg.do")
+	@GetMapping("/reg.do")
 	public String login(DmUser user,DmCart dc) {
 		return user.toString()+"<br>"+dc;
 	}
 	
+	
+	/**
+	 * 使用InitBinder来处理Date类型的参数
+	 * @param date
+	 * @return
+	 */
+	//the parameter was converted in initBinder
+//    @RequestMapping("date")
+//    public String date(Date date){
+//        System.out.println(date);
+//        return "hello";
+//    }
+//    
+//    //At the time of initialization,convert the type "String" to type "date"
+//    @InitBinder
+//    public void initBinder(ServletRequestDataBinder binder){
+//        binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"),
+//                true));
+//    }
+	
+    //redirect 
+//    @RequestMapping("/redirect")
+//    public String redirect(){
+//        return "/pay.do";
+//    }
+    
 	@GetMapping("pay.do")
 	public String pay(
 			@RequestParam(//此注解 定义在uid前，userid是从前台传过来的参数  相当于替代uid
