@@ -14,4 +14,35 @@ public class IndexAction {
 	public String index(@RequestParam(defaultValue = "") String order) {
 		return "index" + order;
 	}
+	
+	@RequestMapping({"taobao/page","*Taobao","page/**/taobao"})
+	public String toTaobao() {
+		return "taobao";
+	}
+	
+	@RequestMapping(path="toPage",params="flag")
+	public String taoabo1() {
+		return "taobao";
+	}
+	
+	@RequestMapping(path="toPage",params="type=1")
+	public String taoabo2() {
+		return "taobao";
+	}
+	
+	@RequestMapping({"toBaidu","baidu/page"})
+	public String toBaidu() {
+		return "baidu";
+	}
+	
+	@RequestMapping(path="toPage",params={"type!=1","!flag"})
+	public String baidu1() {
+		return "baidu";
+	}
+	
+	
+	
+	
+	
+	
 }
