@@ -2,6 +2,7 @@ package com.yc.springmvc.action;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -40,7 +41,10 @@ public class IndexAction {
 		return "baidu";
 	}
 	
-	
+	@RequestMapping(path="form.do",method = RequestMethod.POST)
+	public String taobao3() {
+		return "taobao";
+	}
 	
 	
 	
