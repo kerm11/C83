@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class IndexAction {
@@ -45,6 +46,13 @@ public class IndexAction {
 	public String taobao3() {
 		return "taobao";
 	}
+	
+	@ResponseBody
+	@RequestMapping("call.do")
+	public String call(int  type) {
+		return type == 2 ? "taobao" : "baidu";
+	}
+	
 	
 	
 	
