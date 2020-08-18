@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -97,6 +98,7 @@ public class TestAction {
 	 * 
 	 * @SessionAttributes 将指定对象设置到会话中，加在类上  age没有加在  @SessionAttributes
 	 */
+
 	@RequestMapping("{user}/{pwd}/login.do")
 	public String logindo(@PathVariable("user") String user,
 			@PathVariable String pwd,Model model,
