@@ -10,6 +10,7 @@ import com.yc.damai.po.DmCart;
 import com.yc.damai.po.DmUser;
 
 @RestController
+@RequestMapping("demo")
 public class ProductAction {
 	/**
 	 * path==value 互为同义词

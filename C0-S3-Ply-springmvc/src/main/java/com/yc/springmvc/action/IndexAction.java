@@ -75,7 +75,7 @@ public class IndexAction {
 	}
 	
 	@ResponseBody
-	@RequestMapping(path = "exex.do")
+	@RequestMapping(path = "exex1.do")
 	public Result exec1() {
 		Result r=new Result();
 		r.setUrl("toTaobao");
