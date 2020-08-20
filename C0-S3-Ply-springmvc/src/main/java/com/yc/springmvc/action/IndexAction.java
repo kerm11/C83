@@ -1,6 +1,8 @@
 package com.yc.springmvc.action;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,7 +68,7 @@ public class IndexAction {
 	}
 	
 	@ResponseBody
-	@RequestMapping(path = "exex.do")
+	@PostMapping(path = "exec.do")
 	public Result exec() {
 		Result r=new Result();
 		r.setUrl("toBaidu");
@@ -75,7 +77,7 @@ public class IndexAction {
 	}
 	
 	@ResponseBody
-	@RequestMapping(path = "exex1.do")
+	@GetMapping(path = "exec.do")
 	public Result exec1() {
 		Result r=new Result();
 		r.setUrl("toTaobao");
