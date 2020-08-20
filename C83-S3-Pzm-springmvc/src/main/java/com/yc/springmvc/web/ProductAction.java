@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.yc.damai.po.DmCart;
 import com.yc.damai.po.DmUser;
 
+
 @RestController
 @RequestMapping("demo")
 public class ProductAction {
@@ -24,7 +25,7 @@ public class ProductAction {
 	 * @return
 	 */
 	
-	@RequestMapping(path = "product.do",params = "op=query", produces = "text/plain;charset=UTF-8")
+	@RequestMapping(path = "product.do",params = "op=query1", produces = "text/plain;charset=UTF-8")
 	public String query() {
 		return "邹蔓!!";
 	}
@@ -112,7 +113,7 @@ public class ProductAction {
 	}
 	
 	@GetMapping("findUser.do")
-	public DmUser finDmUser() {
+	public DmUser findDmUser() {
 		DmUser du = new DmUser();
 		du.setId(100);
 		du.setCname("lisi");
