@@ -3,6 +3,8 @@ package com.yc.springmvc.action;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,7 +13,8 @@ import com.yc.damai.po.DmProduct;
 
 @RestController("pAction")
 public class ProductAction {
-
+  
+	@Resource
 	private DmProductMapper pm;
 	
 	/**
@@ -23,8 +26,9 @@ public class ProductAction {
 	 */
 	@GetMapping(path="product.do",params = "op=query")
 	public Map<String, Object>  query(DmProduct dp){
+		dp.setIsHot(1);
 		Map<String, Object>  m=new HashMap<String, Object>();
-		m.put("list", pm.selectForHot());
+		m.put("list", pm.selectByObj(dp));//该方法的sql配置在xml中
 		return m;		
 	}
 	

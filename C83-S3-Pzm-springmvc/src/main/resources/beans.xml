@@ -10,8 +10,7 @@
         https://www.springframework.org/schema/context/spring-context.xsd
         http://mybatis.org/schema/mybatis-spring 
         http://mybatis.org/schema/mybatis-spring.xsd
-        http://www.springframework.org/schema/mvc
-        https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+        http://www.springframework.org/schema/mvc        https://www.springframework.org/schema/mvc/spring-mvc.xsd">
         
         <!-- 手动添加Spring xml 文件命名空间 -->
           <!-- 引入属性文件 -->
@@ -27,6 +26,8 @@
 		<!-- MyBatis会话工厂bean -->
 		<bean id="sqlSessionFactory"  class="org.mybatis.spring.SqlSessionFactoryBean">
 		    <property name="dataSource" ref="dataSource"></property>
+		    <!-- 加入注解配置 -->
+		    <property name="mapperLocations"  value="classpath*:com/yc/damai/dao/*.xml"></property>
 		</bean>
 		
 		<!-- 发现映射器   映射器扫描 -->
