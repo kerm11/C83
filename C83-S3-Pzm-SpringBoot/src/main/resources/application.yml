@@ -21,6 +21,12 @@ spring:
        default-encoding: UTF-8
        
        
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true 
+ # 开启驼峰命名 
+       
+       
 #日志配置
 logging:
     level:

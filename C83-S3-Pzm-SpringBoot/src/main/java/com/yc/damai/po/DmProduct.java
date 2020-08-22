@@ -92,4 +92,5 @@ public class DmProduct {
     public void setCid(Integer cid) {
         this.cid = cid;
     }
+
 }
