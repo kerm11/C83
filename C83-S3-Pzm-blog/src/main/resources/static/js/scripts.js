@@ -116,7 +116,37 @@ document.body.onselectstart = document.body.ondrag = function () {
 //启用工具提示
 $('[data-toggle="tooltip"]').tooltip();
  
- 
+//无限滚动反翻页
+var page = 1;
+$(function(){
+	var ias = jQuery.ias({
+		// 动态加载内容的容器标签, 放置 article 的容器
+		container : '.content',
+		// 动态加载项目 ==> 每个文章的标签 : article
+		item : '.post',
+		// 分页标签
+		pagination : '#pagination',
+		// 分页标签内部的超链接, 用于发起第N次请求
+		next : '.next'
+	});
+	// 加分页查询参数
+	ias.on(	"load", function(e){
+		e.ajaxOptions.data = {page:page++};
+	});
+	// 加载图片
+	ias.extension(new IASSpinnerExtension({
+	    src: 'loading.gif', // 图片地址
+	}));
+	
+	ias.extension(new IASTriggerExtension({
+	    text: '查看更多',
+	    offset: 5 // 第几页后开始
+	}));
+});
+
+
+
+
 //无限滚动反翻页
 jQuery.ias({
 	history: false,
@@ -196,12 +226,12 @@ $(window).scroll(function () {
 })();
 
 /*禁止键盘操作*/
-document.onkeydown=function(event){
+/*document.onkeydown=function(event){
 	var e = event || window.event || arguments.callee.caller.arguments[0];
 	if((e.keyCode === 123) || (e.ctrlKey) || (e.ctrlKey) && (e.keyCode === 85)){
 		return false;
 	}
-}; 
+}; */
 
 /*文章评论*/
 $(function(){
