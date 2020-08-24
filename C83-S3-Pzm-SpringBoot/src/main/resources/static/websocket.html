@@ -33,7 +33,7 @@
 	}
 	//发送消息
 	function send() {
-		var msg = tname.value + ":" + content.value;
+		var msg =tname.value + ":" + content.value;
 		websocket.send(msg);
 		msgs.value += msg + "\n";
 	}

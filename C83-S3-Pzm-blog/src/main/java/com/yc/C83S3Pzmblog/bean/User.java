@@ -2,6 +2,13 @@ package com.yc.C83S3Pzmblog.bean;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Length;
+
+
 public class User implements java.io.Serializable{
 
 	
@@ -10,9 +17,19 @@ public class User implements java.io.Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer id;
+	@NotEmpty(message = "昵称不能为空")
+	@Length(min = 4,max = 20,message = "昵称必须为4~20个字符")
 	private String name;
+	@NotEmpty(message = "账号不能为空")
+	@Length(min = 4,max = 20,message = "账号必须为4~20个字符")
 	private String account;
+	@NotEmpty(message = "密码不能为空")
+	@Length(min = 4,max = 20,message = "密码必须为4~20个字符")
+	private String pwd;
+	@NotEmpty(message = "电话不能为空")
+	@Pattern(regexp = "\\d{11}",message = "电话号码必须为11位")
 	private String phone;
+	@Email(message = "邮箱格式错误")
 	private String email;
 	private String head;
 	private Timestamp createtime;
@@ -35,6 +52,14 @@ public class User implements java.io.Serializable{
 	}
 	public void setAccount(String account) {
 		this.account = account;
+	}
+	
+	
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 	public String getPhone() {
 		return phone;

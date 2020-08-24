@@ -22,6 +22,7 @@ public class MyWebSocket {
 	// 连接建立成功调用的方法
 	@OnOpen
 	public void onOpen(@PathParam("id") String id, Session session) {
+		session.getUserProperties().put("id", id);
 		// HashMap(线程不安全) Hashtable(线程安全) 区别
 		System.out.println(id + " 已经连接成功!");
 		webSocketMap.put(id, session);
@@ -31,6 +32,8 @@ public class MyWebSocket {
 	@OnClose
 	public void onClose(Session session) {
 		// 移除 webSocketMap 中的会话
+		System.out.println(session);//在hashtable中通过value session 移除key  id
+		webSocketMap.remove(session.getUserProperties().get("id"));
 	}
 
 	// 收到客户端消息后调用的方法
