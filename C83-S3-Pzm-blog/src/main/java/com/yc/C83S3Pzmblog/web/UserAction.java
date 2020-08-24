@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -19,12 +18,14 @@ import com.yc.C83S3Pzmblog.bean.Result;
 import com.yc.C83S3Pzmblog.bean.User;
 import com.yc.C83S3Pzmblog.biz.BizExcepetion;
 import com.yc.C83S3Pzmblog.biz.UserBiz;
+import com.yc.C83S3Pzmblog.dao.CategoryMapper;
 
 @Controller //默认控制器方法是执行页面跳转
 public class UserAction {
 	@Resource
 	private UserBiz ubiz;
-	
+	@Resource
+	private CategoryMapper cmapper;
 	/**
 	 * 注册：表单提交 ==>页面跳转
 	 * @param user
@@ -34,6 +35,7 @@ public class UserAction {
 		if(errors.hasErrors()) {
 			m.addAttribute("errors", asMap(errors));
 			m.addAttribute("user", user);
+			
 			return "reg";
 		}		
 		try {
@@ -43,6 +45,7 @@ public class UserAction {
 			errors.rejectValue("account", "account", e.getMessage());
 			m.addAttribute("errors", asMap(errors));
 			m.addAttribute("user", user);
+	
 			return "reg";
 		}	
 		//index请求转发方式跳转到index
@@ -51,7 +54,8 @@ public class UserAction {
 	}
 	
 	@GetMapping("toreg")
-	public String toreg() {
+	public String toreg(Model m) {
+		m.addAttribute("clist", cmapper.selectByCategory());
 		return "reg";
 	}
 	/**

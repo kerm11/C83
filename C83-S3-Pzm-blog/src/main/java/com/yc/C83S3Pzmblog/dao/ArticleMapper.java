@@ -13,4 +13,7 @@ public interface ArticleMapper {
 
 	@Select("select * from article where id=#{id}")
 	public Article selectById(int id);
+	
+	@Select("select  * from article ORDER BY readCnt desc,agreeCnt desc  limit 0,5")
+	public List<Article> selectByHot();
 }
