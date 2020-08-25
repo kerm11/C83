@@ -7,14 +7,4 @@ spring:
        username:  root
        password:  a
        driver-class-name:  com.mysql.jdbc.Driver        
-   servlet:
-      multipart:
-      #单个文件的最大值
-      max-file-size: 5MB
-      #上传文件的最大值
-      max-request-size: 5MB
-   resources:
-       #增加外部静态资源目录映射
-      static-locations: classpath:/photo/**,file:/F:/yc-html/影视TV/images/
-webvalue:
-   resourcePath: file:/F:/yc-html/影视TV/images/ 
+

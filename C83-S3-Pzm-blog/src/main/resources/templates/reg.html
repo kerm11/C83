@@ -47,8 +47,8 @@ span{
     		邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱: 
     		<input name="email"  th:value="${user}!=null ? ${user.email} : ''  ">
     		<span class="e" th:if="${errors}!=null"  th:text="${errors.get('email')}"> </span><br>
-    		上传头像:<input type="file" name="head"><button>上传</button>
-			<img alt="head" src="">
+    		<!-- 上传头像:<input type="file" name="head"><button>上传</button>
+			<img alt="head" src=""> -->
     		<button type="submit">注册</button>
 
     	</form>

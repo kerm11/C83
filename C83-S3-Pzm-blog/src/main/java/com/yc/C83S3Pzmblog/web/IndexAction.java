@@ -40,4 +40,6 @@ public class IndexAction {
 		m.addAttribute("article", article);
 		return "article";		
 	}
+	
+
 }

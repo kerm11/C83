@@ -2,9 +2,11 @@ package com.yc.C83S3Pzmblog.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import com.yc.C83S3Pzmblog.bean.Article;
+
 
 public interface ArticleMapper {
 	
@@ -16,4 +18,9 @@ public interface ArticleMapper {
 	
 	@Select("select  * from article ORDER BY readCnt desc,agreeCnt desc  limit 0,5")
 	public List<Article> selectByHot();
+
+	@Insert("insert into article values (#{id},#{author},#{title},#{content},"
+			+ "#{keywords},#{description},#{categoryid},#{label},#{titleimgs},"
+			+ "#{status},#{createtime},#{readcnt},#{agreecnt})")
+	public int insert(Article a);
 }
