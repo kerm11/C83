@@ -20,7 +20,7 @@ public class IndexAction {
 	@Resource
 	private CategoryMapper cmapper;
 	
-	@GetMapping("/")
+	@GetMapping({"/","/index.html"})
 	public String index( Model m,@RequestParam(defaultValue = "1") int page) {
 	
 		//在执行查询前，设置分页参数
@@ -32,14 +32,6 @@ public class IndexAction {
 		return "index";
 	}
 
-	@GetMapping("article.do")
-	public String article(int id,Model m) {
-		Article article = amapper.selectById(id);
-		m.addAttribute("clist", cmapper.selectByCategory());
-		m.addAttribute("hlist", amapper.selectByHot());
-		m.addAttribute("article", article);
-		return "article";		
-	}
 	
 
 }
