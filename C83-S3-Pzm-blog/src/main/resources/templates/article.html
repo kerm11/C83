@@ -41,7 +41,7 @@
           <i class="glyphicon glyphicon-globe"></i> 第一PHP社区</span>
            <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title="栏目：后端程序">
            <i class="glyphicon glyphicon-list"></i> 
-           <a href="program" title=""   th:text="${article.categoryid}">后端程序</a></span> <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" title="查看：120"><i class="glyphicon glyphicon-eye-open"></i> 共120人围观</span> <span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom" title="评论：0"><i class="glyphicon glyphicon-comment"></i> 0个不明物体</span> </div>
+           <a href="program" title=""   th:text="${article.category.name}">后端程序</a></span> <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" title="查看：120"><i class="glyphicon glyphicon-eye-open"></i> 共120人围观</span> <span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom" title="评论：0"><i class="glyphicon glyphicon-comment"></i> 0个不明物体</span> </div>
       </header>
       <article class="article-content">
         <p><img data-original="images/banner/banner_03.jpg" src="images/banner/banner_03.jpg" alt="" /></p>
@@ -74,6 +74,7 @@
           <h3 class="text-muted">当前文章禁止评论</h3>
         </div>
       </div>-->
+      <div id="comms">
       <div id="respond">
         <form action="" method="post" id="comment-form">
           <div class="comment">
@@ -88,6 +89,7 @@
             </div>
           </div>
         </form>
+      </div>
       </div>
       <div id="postcomments">
         <ol class="commentlist">

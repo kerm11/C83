@@ -47,6 +47,7 @@ public class ArticleAction {
 	public ModelAndView addArticle(@Valid Article article , Errors errors ,ModelAndView mav,
 			@SessionAttribute("loginedUser") User user) {
 		//ModelAndView = Model + View
+		
 		if (errors.hasErrors()) {
 			mav.addObject("errors",Utils.asMap(errors));
 			mav.addObject("article", article);

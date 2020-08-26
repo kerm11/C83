@@ -15,6 +15,22 @@ public class Comment implements java.io.Serializable{
 	private String content;
 	private Integer createby;
 	private Timestamp createtime;
+	
+	private Article article; // 关联文章   一对一管理
+	private User user; 		 // 发表人, 关联 User  一对一管理
+
+	public Article getArticle() {
+		return article;
+	}
+	public void setArticle(Article article) {
+		this.article = article;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public Integer getId() {
 		return id;
 	}

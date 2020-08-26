@@ -8,3 +8,11 @@ spring:
        password:  a
        driver-class-name:  com.mysql.jdbc.Driver        
 
+#日志配置
+logging:
+    level:
+      com:
+         yc:
+           C83S3Pzmblog:
+             dao: debug  
+             web: warn

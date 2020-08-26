@@ -12,4 +12,8 @@ public interface CategoryMapper {
 	
 	@Select("select  DISTINCT name from category")
 	public List<Category> selectByCategory();
+	
+	@Select("select  *  from category  where id=#{id}")
+	public Category selectById(int id);
+	
 }
