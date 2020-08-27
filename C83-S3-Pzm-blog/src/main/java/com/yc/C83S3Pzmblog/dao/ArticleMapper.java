@@ -19,7 +19,7 @@ public interface ArticleMapper {
 	// <ResultMap> == @Results
 	@Results(id="rmAm", value={ 
 		@Result(id = true, column = "id", property = "id"), // 缓存性能优化用到
-		@Result(column = "categoryid", property = "categoryid"), // 缓存性能优化用到
+		@Result(column = "categoryid", property = "categoryid"), 
 		@Result(
 				column = "categoryid", 
 				property = "category",

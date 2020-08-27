@@ -1,6 +1,11 @@
 package com.yc.C83S3Pzmblog.bean;
 
 import java.sql.Timestamp;
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Comment implements java.io.Serializable{
 
@@ -14,6 +19,23 @@ public class Comment implements java.io.Serializable{
 	private Integer articleid;
 	private String content;
 	private Integer createby;
+	//请求参数格式化注解
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    //JSON转换的格式化注解
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date date;
+	
+    
+    public Date getDate() {
+ 		return date;
+ 	}
+
+ 	public void setDate(Date date) {
+ 		this.date = date;
+ 		//将date值同步到createtime
+ 		this.createtime = new Timestamp(date.getTime());
+ 	}
+	
 	private Timestamp createtime;
 	
 	private Article article; // 关联文章   一对一管理
