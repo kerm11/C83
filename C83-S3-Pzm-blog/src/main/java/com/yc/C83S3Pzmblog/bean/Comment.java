@@ -23,6 +23,8 @@ public class Comment implements java.io.Serializable{
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     //JSON转换的格式化注解
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+
+ //   @DateTimeFormat(iso=ISO.DATE)
     private Date date;
 	
     
