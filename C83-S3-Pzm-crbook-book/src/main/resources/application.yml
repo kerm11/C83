@@ -1,0 +1,4 @@
+# 定义当前服务名
+spring:
+   application:
+       name:  crbook

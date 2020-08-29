@@ -1,0 +1,8 @@
+server:
+    port: 8003
+    
+# 定义当前服务名
+spring:
+   application:
+      name: cruser
+  
