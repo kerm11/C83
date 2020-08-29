@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+
 @RestController
 public class UserAction {
 
@@ -28,4 +29,12 @@ public class UserAction {
 		return res;
 	}
 	
+	@Resource
+	IOrderAction ioa;
+
+	@GetMapping("order1")
+	public String order1() {
+		// 声明式远程服务调用
+		return ioa.order();
+	}
 }
