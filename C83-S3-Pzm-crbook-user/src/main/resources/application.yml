@@ -5,4 +5,8 @@ server:
 spring:
    application:
       name: cruser
-  
+   datasource:
+      url: jdbc:mysql://127.0.0.1/a?serverTimezone=UTC&CharacterEncoding=UTF-8&useSSL=false
+      username: root
+      password: a
+      driver-class-name: com.mysql.jdbc.Driver
