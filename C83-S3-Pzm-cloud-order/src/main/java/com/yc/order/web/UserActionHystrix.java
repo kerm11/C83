@@ -2,7 +2,7 @@ package com.yc.order.web;
 
 import org.springframework.stereotype.Component;
 
-@Component
+@Component//此Action并不是直接给用户访问的，它是一个替代方案
 public class UserActionHystrix implements IUserAction{
 
 	@Override
