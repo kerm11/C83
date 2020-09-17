@@ -33,5 +33,11 @@ public class IndexAction {
 		
 		return "index";
 	}
+	
+	@GetMapping(path= {"tologin","login.html"})
+	public String tologin() {
+		return "login";
+	}
+
 
 }
