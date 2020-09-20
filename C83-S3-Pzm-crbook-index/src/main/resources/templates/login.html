@@ -1,7 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
-  "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-hans" version="XHTML+RDFa 1.0" dir="ltr">
-
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.com">
 <head profile="http://www.w3.org/1999/xhtml/vocab">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="misc/favicon.ico" type="image/vnd.microsoft.icon" />
@@ -13,14 +11,7 @@
 <link type="text/css" rel="stylesheet" href="sites/default/files/css/css_NCOSdpoQnWWQHVcfG2o2skDLf8YSjSAlOAadPoELzbo.css" media="all" />
 <link type="text/css" rel="stylesheet" href="sites/default/files/css/css_bdATSoh3o2IK3XRLY7797zuX1tE3-0Stkdq5mD0eflg.css" media="all" />
 
-<!--[if lt IE 9]>
-<link type="text/css" rel="stylesheet" href="sites/all/themes/dushu/css/fix-ie7.css?q633bi" media="all" />
-<![endif]-->
-
-<!--[if lt IE 7]>
-<link type="text/css" rel="stylesheet" href="sites/all/themes/dushu/css/fix-ie6.css?q633bi" media="all" />
-<![endif]-->
-  <script type="text/javascript" src="sites/default/files/js/js_qikmINIYTWe4jcTUn8cKiMr8bmSDiZB9LQqvceZ6wlM.js"></script>
+ <script type="text/javascript" src="sites/default/files/js/js_qikmINIYTWe4jcTUn8cKiMr8bmSDiZB9LQqvceZ6wlM.js"></script>
 <script type="text/javascript" src="sites/default/files/js/js_6uMVSUgDf9ldb_NCxvCamFQoenOq-XcovWYUCJT4HIU.js"></script>
 <script type="text/javascript" src="sites/default/files/js/js_GoDnzx_E8ykdnHtSllbBGo-0O7ij65Hx3vLfl_xHZg8.js"></script>
 <script type="text/javascript" src="sites/default/files/js/js_xThLSve1PKygorKK3W5JBKVAg5PaB1uw7YAS7kRSzqc.js"></script>
@@ -40,10 +31,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
   <div id="skip-link">
     <a href="#main-content" class="element-invisible element-focusable">跳转到主要内容</a>
   </div>
-    
-
-
-<!--��ҳͷ��-->
+ 
 
 <div id="mininav">
    <div class="mininav_inner">
@@ -156,14 +144,17 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
 
     
   <div class="content">
-    <form action="/user" method="post" id="user-login" accept-charset="UTF-8"><div><div class="form-item form-type-textfield form-item-name">
-  <label for="edit-name">用户名 <span class="form-required" title="此项必填。">*</span></label>
- <input type="text" id="edit-name" name="name" value="" size="60" maxlength="60" class="form-text required" />
+    <form action="/login" method="post" id="user-login" accept-charset="UTF-8"><div><div class="form-item form-type-textfield form-item-name">
+  <label for="edit-name">用户名 <span class="form-required" title="此项必填。">*</span>									<span th:each="e : ${errors}" th:if="${e.field=='account'}" th:text="${e.defaultMessage}"></span>									
+								</label> <input type="text" id="edit-name"
+									name="account" value="" size="60" maxlength="60" class="form-text required"  th:value="${user?.account}"/><!-- 判断输出user的account属性值 -->/>
 <div class="description">输入您在 灿然书屋 的用户名。</div>
 </div>
 <div class="form-item form-type-password form-item-pass">
-  <label for="edit-pass">密码 <span class="form-required" title="此项必填。">*</span></label>
- <input type="password" id="edit-pass" name="pass" size="60" maxlength="128" class="form-text required" />
+  <label for="edit-pass">密码 <span class="form-required" title="此项必填。">*</span>			
+  						<span th:each="e : ${errors}" th:if="${e.field=='pwd'}" th:text="${e.defaultMessage}"></span>	
+								</label> <input type="password" id="edit-pass"
+									name="pwd" size="60" maxlength="128" class="form-text required" th:value="${user?.pwd}"/>
 <div class="description">输入与您用户名相匹配的密码。</div>
 </div>
 <input type="hidden" name="form_build_id" value="form-JVXp71rVOCL1SnIxLGW6jxhqGl_6DEdv77CsgY080ik" />

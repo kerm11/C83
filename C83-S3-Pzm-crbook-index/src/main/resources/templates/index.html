@@ -1051,7 +1051,8 @@
 
 						<div class="content">
 							<div>
-								<span><a href="login.html">[登录]</a><a class="link-regist" href="register.html">[免费注册]</a></span>
+<span th:if="${session.loginedUser==null}"><a href="login.html">[登录]</a><a class="link-regist" href="register.html">[免费注册]</a></span>
+								<span th:if="${session.loginedUser!=null}">欢迎 <span th:text="${session.loginedUser.name}"></span><a class="link-regist" href="logout">[退出]</a></span>
 							</div>
 						</div>
 					</div>
@@ -2411,7 +2412,7 @@
 
 																<div class="views-field views-field-uc-product-image">
 																	<div class="field-content">
-																		<a href="book.html" th:title="${show.book.name}" target="_blank"><img
+																		<a th:href="'book.html?id='+${show.book.id}"  th:title="${show.book.name}" target="_blank"><img
 																			th:data-src="${show.book.pic}" src="sites/all/modules/lazyloader/image_placeholder.gif"
 																			width="130" height="130" alt="" />
 																		<noscript>
@@ -2435,7 +2436,7 @@
 
 																<div class="views-field views-field-uc-product-image">
 																	<div class="field-content">
-																		<a href="book.html" th:title="${show.book.name}" target="_blank"><img
+																		<a th:href="'book.html?id='+${show.book.id}"  th:title="${show.book.name}" target="_blank"><img
 																			th:data-src="${show.book.pic}" src="sites/all/modules/lazyloader/image_placeholder.gif"
 																			width="130" height="130" alt="" />
 																		<noscript>
@@ -2624,12 +2625,12 @@
 
 																	<div class="views-field views-field-uc-product-image">
 																		<div class="field-content">
-																			<a href="book.html" th:title="${book.name}"><img
+																			<a th:href="'book.html?id='+${book.id}" th:title="${book.name}"><img
 																				th:src="${book.pic}" th:alt="${book.name}" width="130px" height="130px"></a>
 																		</div>
 																	</div>
 																	<div class="views-field views-field-title">
-																		<span class="field-content"><a href="book.html" th:text="${book.name}">脂砚斋重评石头记：庚辰本（全4册）（精）...</a></span>
+																		<span class="field-content"><a th:href="'book.html?id='+${book.id}" th:text="${book.name}">脂砚斋重评石头记：庚辰本（全4册）（精）...</a></span>
 																	</div>
 																	<div class="views-field views-field-list-price">
 																		<span class="views-label views-label-list-price">定价: </span> <span class="field-content"><span class="uc-price" th:text="${book.price}">¥290.00</span></span>
