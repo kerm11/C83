@@ -1,6 +1,10 @@
 package com.yc.crbook.bean;
 
-public class CrLink {
+public class CrLink  implements java.io.Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
     private Integer id;
 
     private String url;

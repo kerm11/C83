@@ -3,7 +3,11 @@ package com.yc.crbook.bean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CrBookExample {
+public class CrBookExample  implements java.io.Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
     protected String orderByClause;
 
     protected boolean distinct;
