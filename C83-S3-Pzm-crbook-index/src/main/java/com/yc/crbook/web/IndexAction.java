@@ -10,10 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.yc.crbook.bean.CrBook;
+import com.yc.crbook.bean.CrCart;
 import com.yc.crbook.bean.CrShow;
 import com.yc.crbook.bean.CrUser;
 import com.yc.crbook.bean.Result;
@@ -67,7 +69,7 @@ public class IndexAction {
 	public String login(@Valid CrUser user, Errors errors, Model m) {
 
 		// 验证用户输入的数据是否正确
-		if (errors.hasErrors()) {
+		if (errors.hasFieldErrors("account") || errors.hasFieldErrors("pwd")) {
 			// 讲用户填写的数据传回页面
 			m.addAttribute("user", user);
 			m.addAttribute("errors", errors.getFieldErrors());
@@ -75,10 +77,14 @@ public class IndexAction {
 		}
 
 		// 发起远程服务调用， 传递2个参数（用户名，密码）
-		Result res = uaction.login(user);
+		Result<CrUser> res = uaction.login(user);
 
 		// 根据返回的结果，如果正确跳转首页
 		if (res.getCode() == 1) {
+			/**
+			 * Feign 对于 Result.data 的类型, 如果data是Object类型, 会将其转为 LinkedHashMap
+			 * 		 使用泛型那么 Feign 就是正确转换类型
+			 */
 			m.addAttribute("loginedUser", res.getData());
 			return index(m);
 		} else {
@@ -128,6 +134,13 @@ public class IndexAction {
 	public String book(int id, Model m) {
 		m.addAttribute("book", baction.getById(id));
 		return "book";
+	}
+	
+	@GetMapping("tocart")
+	public String tocart(@SessionAttribute CrUser loginedUser, Model m) {
+		List<CrCart> carts = uaction.findByUid(loginedUser.getId());
+		m.addAttribute("carts", carts);
+		return "cart";
 	}
 
 }

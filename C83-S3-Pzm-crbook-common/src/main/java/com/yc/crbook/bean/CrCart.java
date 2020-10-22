@@ -17,6 +17,16 @@ public class CrCart  implements java.io.Serializable{
 
     private Date createTime;
 
+    private CrBook book;
+
+    public CrBook getBook() {
+		return book;
+	}
+
+	public void setBook(CrBook book) {
+		this.book = book;
+	}
+
     public Integer getId() {
         return id;
     }
